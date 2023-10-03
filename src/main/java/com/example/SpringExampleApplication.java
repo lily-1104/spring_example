@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-@MapperScan(basePackages = "com.example.*")
+@MapperScan(basePackages = "com.example.*")		// @Repository 위치를 찾아줌
 @SpringBootApplication
 public class SpringExampleApplication {
 
