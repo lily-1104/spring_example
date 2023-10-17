@@ -12,6 +12,7 @@ import com.example.lesson02.domain.UsedGoods;
 @RestController
 public class Lesson02Ex01RestController {
 	
+	
 	@Autowired	// DI (spring bean을 주입)
 	private UsedGoodsBO usedGoodsBO;
 	

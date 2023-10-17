@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.example.lesson04.mapper.UserMapper">
+ 	
+ 	<!-- 회원가입 -->
+ 	<insert id="insertUser" parameterType="map">
+ 		
+ 		INSERT INTO `new_user`
+ 		(
+ 			`name`
+			, `yyyymmdd`
+			, `introduce`
+			, `email`
+			, `createdAt`
+			, `updatedAt`
+ 		)
+ 		
+ 		VALUES
+ 		(
+ 			#{name}
+ 			, #{yyyymmdd}
+ 			, #{introduce}
+ 			, #{email}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	
+ 	</insert>
+ 	
+ 	
+ 	
+ 	<!-- 최신 가입자 한명 가져오는 페이지 -->
+ 	<select id="selectLatestUser" resultType="com.example.lesson04.domain.User">		<!-- parameter가 없어서 parameterType은 생략 -->
+ 	
+ 		SELECT 
+ 			`id`	<!-- select 문은 id 필요함 -->
+ 			, `name`
+			, `yyyymmdd`
+			, `introduce`
+			, `email`
+			, `createdAt`
+			, `updatedAt`
+ 		
+ 		FROM
+ 			`new_user`
+ 		
+ 		ORDER BY `id` DESC
+ 		
+ 		LIMIT 1		<!-- 맨 위 한명만 조회 -->
+ 	
+ 	</select>
+ 	
+ 	
+ 	
+ 	<!-- lesson 06 - 이름 중복 확인 (DB 조회) -->
+ 	<select id="existUserByName" parameterType="string" resultType="boolean">
+ 								<!-- boolean 이라서 0이면 거짓, 그 이상의 수가 나오면 참 -->
+ 	
+ 		SELECT
+ 			COUNT(*)
+ 		
+ 		FROM
+ 			`new_user`
+ 		
+ 		WHERE
+ 			`name` = #{name}
+ 	
+ 	</select>
+ 	
+ 	
+ </mapper>
