@@ -17,7 +17,6 @@ public class Lesson03Ex01RestController {
 	
 	
 	// 1
-	// 요청 URL : http://localhost/lesson03/ex01
 	// 요청 URL : http://localhost/lesson03/ex01?id=5
 	@RequestMapping("/lesson03/ex01")
 	public Review ex01(
